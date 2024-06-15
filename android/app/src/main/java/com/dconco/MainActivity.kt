@@ -1,4 +1,4 @@
-package com.dconco
+package com.dconco.calculator
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

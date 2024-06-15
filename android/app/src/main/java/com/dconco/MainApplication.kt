@@ -1,4 +1,4 @@
-package com.dconco
+package com.dconco.calculator
 
 import android.app.Application
 import com.facebook.react.PackageList
