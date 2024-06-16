@@ -4,10 +4,18 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'space-between',
-		backgroundColor: 'lightblue',
+		backgroundColor: '#029cd4',
+	},
+	header: {
+		marginTop: 0,
+		paddingTop: 0,
+		alignItems: 'center',
+	},
+	headerText: {
+		color: '#C1C1C1',
+		fontSize: 15,
 	},
 	display: {
-		display: 'flex',
 		flex: 1,
 		alignItems: 'flex-end',
 		justifyContent: 'flex-end',
@@ -18,6 +26,7 @@ const styles = StyleSheet.create({
 	displayText: {
 		fontSize: 70,
 		color: 'black',
+		textAlign: 'right',
 	},
 	buttonWrapper: {
 		display: 'flex',
@@ -37,6 +46,7 @@ const styles = StyleSheet.create({
 	buttonText: {
 		fontSize: 30,
 		fontWeight: '500',
+		color: 'white',
 	},
 })
 

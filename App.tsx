@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import {
-	Alert,
 	SafeAreaView,
 	StatusBar,
 	Text,
@@ -9,25 +8,35 @@ import {
 } from 'react-native'
 import { styles } from './styles/app.style'
 import { buttons } from './components/buttons.component'
+import { evaluate } from 'mathjs'
 
 const App: React.FC = () => {
 	const [result, setResult] = useState<string>('0')
 
 	useEffect(() => setResult('0'), [])
 
-	const setDisplay = (button: string) => {
+	const setDisplay = async (button: string) => {
 		if (button === '[x]') {
-			result.length === 1
+			result.match(/[Error]/) || result.length === 1
 				? setResult('0')
 				: setResult(x => x.substring(0, x.length - 1))
 		} else if (button == 'C') {
 			setResult('0')
-		} else if (button.match(/[+×÷.-]/)) {
-			if (result[result.length - 1].match(/[^+×÷.-]/))
-				setResult(x => (x += button))
+		} else if (
+			button.match(/[+×÷.-]/) &&
+			result[result.length - 1].match(/[+×÷.-]/)
+		) {
+			setResult(x => x.substring(0, x.length - 1).concat(button))
 		} else if (button === '=') {
-			Alert.alert('Alert', result)
-			setResult('0')
+			try {
+				let res: string = result.replaceAll('×', '*')
+				res = res.replaceAll('÷', '/')
+
+				let final = await evaluate(res)
+				setResult(String(final))
+			} catch (error: any) {
+				setResult(error?.name)
+			}
 		} else {
 			result === '0' ? setResult(button) : setResult(x => (x += button))
 		}
@@ -35,9 +44,13 @@ const App: React.FC = () => {
 
 	return (
 		<>
-			<StatusBar backgroundColor={'lightblue'} barStyle={'dark-content'} />
+			<StatusBar backgroundColor={'#029cd4'} barStyle={'light-content'} />
 
 			<SafeAreaView style={styles.container}>
+				<View style={styles.header}>
+					<Text style={styles.headerText}>dc calculator - @dconco</Text>
+				</View>
+
 				<View style={styles.display}>
 					<Text style={styles.displayText}>{result}</Text>
 				</View>
