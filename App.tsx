@@ -15,12 +15,15 @@ const App: React.FC = () => {
 	useEffect(() => setResult('0'), [])
 
 	const setDisplay = (button: string) => {
-		// Set Delete Button
 		if (button === '[x]') {
 			result.length === 1
 				? setResult('0')
 				: setResult(x => x.substring(0, x.length - 1))
 		} else if (button == 'C') {
+			setResult('0')
+		} else if (button.match(/[+×÷.-]/)) {
+			if (result[result.length - 1].match(/[^+×÷.-]/))
+				setResult(x => (x += button))
 		} else {
 			result === '0' ? setResult(button) : setResult(x => (x += button))
 		}
