@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
+	Alert,
 	SafeAreaView,
 	StatusBar,
 	Text,
@@ -24,6 +25,9 @@ const App: React.FC = () => {
 		} else if (button.match(/[+×÷.-]/)) {
 			if (result[result.length - 1].match(/[^+×÷.-]/))
 				setResult(x => (x += button))
+		} else if (button === '=') {
+			Alert.alert('Alert', result)
+			setResult('0')
 		} else {
 			result === '0' ? setResult(button) : setResult(x => (x += button))
 		}
