@@ -3,6 +3,11 @@
     "displayName": "Calculator",
     "version": "0.0.1",
     "private": true,
+    "author": {
+        "name": "dconco",
+        "email": "concodave@gmail.com",
+        "url": "https://dconco.github.io"
+    },
     "scripts": {
         "android": "react-native run-android",
         "ios": "react-native run-ios",
