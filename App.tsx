@@ -6,9 +6,10 @@ import {
 	TouchableOpacity,
 	View,
 } from 'react-native'
+import { evaluate } from 'mathjs'
 import { styles } from './styles/app.style'
 import { buttons } from './components/buttons.component'
-import { evaluate } from 'mathjs'
+import Icon from '@react-native-vector-icons/fontawesome6'
 
 const App: React.FC = () => {
 	const [result, setResult] = useState<string>('0')
