@@ -6,12 +6,13 @@ import {
 	TouchableOpacity,
 	View,
 } from 'react-native'
-import { evaluate } from 'mathjs'
+import Math, { evaluate } from 'mathjs'
 import { styles } from './styles/app.style'
 import { buttons } from './components/buttons.component'
-import Icon from '@react-native-vector-icons/fontawesome6'
 
 const App: React.FC = () => {
+	evaluate('')
+
 	const [result, setResult] = useState<string>('0')
 
 	useEffect(() => setResult('0'), [])
